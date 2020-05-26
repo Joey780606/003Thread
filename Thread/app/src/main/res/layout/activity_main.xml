@@ -54,5 +54,22 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_25vper"
         app:layout_constraintTop_toTopOf="@+id/guideline_05hper" />
 
+    <TextView
+        android:id="@+id/tvExplain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="@+id/guideline_25vper"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerContent" />
+
+    <Button
+        android:id="@+id/btnExecute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:text="Execute"
+        app:layout_constraintStart_toStartOf="@+id/guideline_25vper"
+        app:layout_constraintTop_toBottomOf="@+id/tvExplain" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

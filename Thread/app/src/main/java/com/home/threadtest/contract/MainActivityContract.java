@@ -11,5 +11,6 @@ public interface MainActivityContract {
     interface Presenter {
         void init();
         void buildSpinnerInfo();
+        void execSample(String cmd);
     }
 }
