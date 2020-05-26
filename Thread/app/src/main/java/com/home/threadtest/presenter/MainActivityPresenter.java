@@ -6,6 +6,7 @@ import android.util.Log;
 import com.home.threadtest.R;
 import com.home.threadtest.contract.MainActivityContract;
 import com.home.threadtest.thread.ThreadExample3;
+import com.home.threadtest.thread.ThreadExample4;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -41,6 +42,7 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
             ThreadDemo3();
         } else if(cmd.equals(mContext.getString(R.string.fun_runnable_interface))) {
             Log.v(TAG, "fun_runnable_interface");
+            ThreadDemo4();
         }
 //        switch(cmd) {
 //            case sinherit_thread_class:
@@ -70,5 +72,19 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         thread8.start();
         thread9.start();
         thread10.start();
+    }
+
+    private void ThreadDemo4() {
+        Thread thread1 = new Thread(new ThreadExample4("message1"));
+        Thread thread2 = new Thread(new ThreadExample4("message1"));
+        Thread thread3 = new Thread(new ThreadExample4("message1"));
+        Thread thread4 = new Thread(new ThreadExample4("message1"));
+        Thread thread5 = new Thread(new ThreadExample4("message1"));
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        thread4.start();
+        thread5.start();
     }
 }

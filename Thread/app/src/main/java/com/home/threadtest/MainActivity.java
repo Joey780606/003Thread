@@ -17,6 +17,11 @@ import com.home.threadtest.presenter.MainActivityPresenter;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/*
+  Reference website:
+  1. https://ithelp.ithome.com.tw/articles/10201500
+  2. https://codertw.com/android-%E9%96%8B%E7%99%BC/355744/  runnable
+ */
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
     private static final String TAG = MainActivity.class.getSimpleName();
     private MainActivityContract.Presenter presenter;
