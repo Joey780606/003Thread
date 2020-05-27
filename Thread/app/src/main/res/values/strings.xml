@@ -3,4 +3,5 @@
 
     <string name="fun_inherit_thread_class">"3. Inherit thread class"</string>
     <string name="fun_runnable_interface">"4. Runnable interface"</string>
+    <string name="fun_wait_notify">"5. Wait &amp; notify"</string>
 </resources>

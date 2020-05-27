@@ -7,6 +7,8 @@ import com.home.threadtest.R;
 import com.home.threadtest.contract.MainActivityContract;
 import com.home.threadtest.thread.ThreadExample3;
 import com.home.threadtest.thread.ThreadExample4;
+import com.home.threadtest.thread.ThreadExmple5Sum1;
+import com.home.threadtest.thread.ThreadExmple5Sum2;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -32,6 +34,7 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         //spinnerInfo.add("3. Inherit thread class");
         spinnerInfo.add(mContext.getString(R.string.fun_inherit_thread_class));
         spinnerInfo.add(mContext.getString(R.string.fun_runnable_interface));
+        spinnerInfo.add(mContext.getString(R.string.fun_wait_notify));
         view.setSpinnerInfo(spinnerInfo);
     }
 
@@ -43,6 +46,8 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         } else if(cmd.equals(mContext.getString(R.string.fun_runnable_interface))) {
             Log.v(TAG, "fun_runnable_interface");
             ThreadDemo4();
+        } else if(cmd.equals(mContext.getString(R.string.fun_wait_notify))) {
+            ThreadDemo5();
         }
 //        switch(cmd) {
 //            case sinherit_thread_class:
@@ -76,10 +81,10 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
 
     private void ThreadDemo4() {
         Thread thread1 = new Thread(new ThreadExample4("message1"));
-        Thread thread2 = new Thread(new ThreadExample4("message1"));
-        Thread thread3 = new Thread(new ThreadExample4("message1"));
-        Thread thread4 = new Thread(new ThreadExample4("message1"));
-        Thread thread5 = new Thread(new ThreadExample4("message1"));
+        Thread thread2 = new Thread(new ThreadExample4("message2"));
+        Thread thread3 = new Thread(new ThreadExample4("message3"));
+        Thread thread4 = new Thread(new ThreadExample4("message4"));
+        Thread thread5 = new Thread(new ThreadExample4("message5"));
 
         thread1.start();
         thread2.start();
@@ -87,4 +92,29 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         thread4.start();
         thread5.start();
     }
+
+    private void ThreadDemo5() {
+        int result;
+
+        ThreadExmple5Sum1 sum1 = new ThreadExmple5Sum1();
+        Thread thread1 = new Thread(sum1);
+        thread1.start();
+        result = sum1.sum;
+        Log.v(TAG, "Thread demo5 value1:" + result);
+
+        ThreadExmple5Sum2 sum2 = new ThreadExmple5Sum2();
+        Thread thread2 = new Thread(sum2);
+        thread2.start();
+        synchronized (thread2) {
+            try {
+                thread2.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                Log.v(TAG, "Thread demo5 value2 error:" + e.toString());
+            }
+        }
+        result = sum2.sum;
+        Log.v(TAG, "Thread demo5 value2:" + result);
+    }
+
 }
